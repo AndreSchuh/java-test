@@ -12,10 +12,10 @@ public class ManipulaNumeros {
                 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40};
 
         imprimeNumerosPares(numeros);
-//        imprimeNumerosPrimos(numeros);
-//        calculaBaskara(1,12,-13);
-//        imprimeAleatorios(numeros, 7);
-//        calculaMedia(numeros, 5);
+        imprimeNumerosPrimos(numeros);
+        calculaBaskara(1,12,-13);
+        imprimeAleatorios(numeros, 7);
+        calculaMedia(numeros, 5);
 
     }
 
@@ -23,11 +23,7 @@ public class ManipulaNumeros {
 
         //Só faltou imprimir o número que é par, e era pra imprimir só os pares mesmo, conforme o nome do método
         System.out.println("\nNúmeros pares!\n");
-        for ( int numero : numeros){ // Essa parte de Enhanced for loop eu tive que pesquisar
-            if(numero % 2 == 0){
-                System.out.println("Número par: "+ numero);
-            }
-        }
+        Arrays.stream(numeros).filter(n -> n % 2 ==0).forEach(System.out::println);
 
         //Pega a sacada: impressão de números pares usando Stream (Stream é uma forma de manipular coleções de dados)
         //Veja como é possível fazer em uma única linha....
@@ -41,25 +37,30 @@ public class ManipulaNumeros {
         // É uma lógica simples, primo é aquele que só divide por um e por ele mesmo, ou seja
         // se numero % 1 == 0 e numero % numero == 0 E qualquer numero entre 1 e ele mesmo não der resto 0
         // cai muito em prova de programação
+        Arrays.stream(numeros).filter(n -> n % 1 ==0).forEach(System.out::println);
+        Arrays.stream(numeros).filter(n -> n % n ==0).forEach(System.out::println);
 
-    }
+        //if( numeros % 1 == 0 || numeros % numeros == 0){
+        //      System.out.println(numeros);
+        //}
+        }
 
     public static void calculaBaskara(int a, int b, int c) {
 
         // Era pra declarar os números assim?
         //Não exatamente aqui dentro, pois vc tem as três variáveis como parâmetros na assinatua do método, então lá
         //dentro do método "main" vc declara as variáveis e chama o calculaBaskara(3, 6, 25). Deixei comentado lá em cima, só tirar o comentário
-//        a = 3;
-//        b = 6;
-//        c = 25;
 
         // o "+-" da forma que vc colocou sempre vai ser menos (mais com menos = menos)
         //Dica, quebrar em partes:
         //Sugiro primeiro calcular o Delta e associar a uma variável
         //A operação de segundo grau espera dois números, então a dica é realizar operação de raiz quadrada separadamente,
         //e na hora de imprimir pensa em algo do tipo: " As raizes são x1 = "val" e x2 = "val" "
-        double resultado = -b +- Math.sqrt((b*b) - 4 * a * c)/ 2 * a;
-        System.out.printf("Resultado %.2f", resultado);
+        calculaBaskara(3, 6, 25);
+        double delta = Math.sqrt((b*b) - 4 * a * c);
+        double resultado1 = -b + delta/ (2 * a);
+        double resultado2 = -b - delta/ (2 * a);
+        System.out.printf("As raízes são x1 = %.2f e x2 %.2f", resultado2, resultado2);
     }
 
     public static void imprimeAleatorios(int[] numeros, int quantidade) {
@@ -70,12 +71,11 @@ public class ManipulaNumeros {
         //e representa a quantidade de números aleatórios que vc quer imprimir
         //Dica: tu vai precisar de um for de 0 até a quantidade (recebido no parâmetro), e dentro do for vc vai
         //mandar imprimir: gerador.nextInt(numeros.length). Isso vai gerar um número aleatório entre 0 e o tamanho do array
-        quantidade = gerador.nextInt(numeros.length);
-
-        int numeroAleatorio = numeros[quantidade];
-        System.out.printf("Número aleatório da array = " + numeroAleatorio);
+        for (int i = 0; quantidade <= 7; i++) {
+            quantidade = quantidade +1;
+            System.out.println(gerador.nextInt(numeros.length));
         }
-
+    }
     public static void calculaMedia(int[] numeros, int quantidade) {
         /*
         Explicando melhor:
@@ -87,11 +87,13 @@ public class ManipulaNumeros {
          */
         // quantidade de números aleatórios do array "numeros"
         // deve imprimir os números aleatórios e em seguida a média deles
-        quantidade = gerador.nextInt(numeros.length);
-        int numeroAleatorio = numeros[quantidade];
+        for (int i = 0; quantidade <= 5; i++) {
+            quantidade = quantidade +1;
+            System.out.println(gerador.nextInt(numeros.length));
+        }
+        int ger = numeros.length;
+        int resultado = ger / quantidade;
 
-        System.out.printf("Número aleatório da array = " + numeroAleatorio);
-
-        int a = (numeroAleatorio.length); // Tive a ideia de usar a length porém ...
+        System.out.printf("A média fica %.2f", resultado);
     }
 }
