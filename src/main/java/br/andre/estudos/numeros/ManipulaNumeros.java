@@ -1,4 +1,4 @@
-package br.andre.projeto1;
+package br.andre.estudos.numeros;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;

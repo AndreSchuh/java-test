@@ -1,4 +1,4 @@
-package br.andre.projeto1;
+package br.andre.estudos.numeros;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
