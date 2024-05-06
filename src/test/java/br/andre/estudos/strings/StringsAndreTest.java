@@ -15,4 +15,12 @@ class StringsAndreTest {
         assertEquals(5, resultado); //deve ser 5
         assertNotEquals(6, resultado); //não deve ser 6
     }
+    @Test
+    void inversaoTest(){
+        StringsAndre.palavra = "Elieser";
+        String resultado = StringsAndre.inverso();
+        assertEquals("reseilE", resultado);
+        assertNotEquals("Elieser", resultado);
+        assertNotEquals("reseile", resultado);
+    }
 }

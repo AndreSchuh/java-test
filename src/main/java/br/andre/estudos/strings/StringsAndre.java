@@ -11,8 +11,9 @@ public class StringsAndre {
         while(true) {
 
             String menu = """
-                     \nQuantidade de caractereres!\n
+                     \nQuantidade de caractereres e texto invertido!\n
                     1 - Contar letras do texto
+                    2 - Texto invertido
                     99 - Sair 
                     Digite a opção desejada\n""";
             System.out.print(menu);
@@ -23,9 +24,14 @@ public class StringsAndre {
                 case 1:
             System.out.println("Digite uma palavra:");
             palavra = sc.nextLine();
-            System.out.println("A quantidade de caracteres é "+ quantidade(palavra));
+            System.out.println("A quantidade de caracteres é "+ quantidade());
             break;
 
+                case 2:
+                    System.out.println("Digite uma palavra:");
+                    palavra = sc.nextLine();
+                    System.out.println("A palavra invertida fica "+ inverso());
+                    break;
                 case 99:
                     System.out.println("Encerrando");
                     System.exit(0);
@@ -40,7 +46,11 @@ public class StringsAndre {
 
     }
 
-    public static int quantidade(String letra){
-        return letra.length();
+    public static int quantidade(){
+        return palavra.length();
+    }
+    public static String inverso(){
+        String stringInvertida = new StringBuilder(palavra).reverse().toString();
+        return stringInvertida;
     }
 }
