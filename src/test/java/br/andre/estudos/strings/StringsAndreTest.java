@@ -17,10 +17,10 @@ class StringsAndreTest {
     }
     @Test
     void inversaoTest(){
-        StringsAndre.palavra = "Elieser";
+        StringsAndre.palavra = "Elieser Prichua";
         String resultado = StringsAndre.inverso();
-        assertEquals("reseilE", resultado);
-        assertNotEquals("Elieser", resultado);
-        assertNotEquals("reseile", resultado);
+        assertEquals("auhcirP reseilE", resultado);
+        assertNotEquals("Elieser Prichua", resultado);
+        assertNotEquals("reseile auhcirp", resultado);
     }
 }
