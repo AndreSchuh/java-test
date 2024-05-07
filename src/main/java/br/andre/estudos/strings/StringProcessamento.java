@@ -6,7 +6,7 @@ import static java.lang.System.out;
 
 public class StringProcessamento {
 
-    public void exibeMenu(){
+    public void exibeMenu() {
         Scanner sc = new Scanner(System.in);
 
         String texto;
@@ -17,6 +17,7 @@ public class StringProcessamento {
                      \nMenu\n
                     1 - Contar letras do texto
                     2 - Texto invertido
+                    5 - Primeira letra maiúscula no texto
                     99 - Sair 
                     Digite a opção desejada\n""";
             out.print(menu);
@@ -34,6 +35,11 @@ public class StringProcessamento {
                     texto = sc.nextLine();
                     out.println("O texto invertido fica " + inverteTexto(texto));
                     break;
+                case 5:
+                    out.println("Digite um texto:");
+                    texto = sc.nextLine();
+                    out.println("O texto invertido fica " + upperCaseFirst(texto));
+                    break;
                 case 99:
                     out.println("Encerrando");
                     System.exit(0);
@@ -50,5 +56,17 @@ public class StringProcessamento {
 
     public String inverteTexto(String texto) {
         return new StringBuilder(texto).reverse().toString();
+    }
+
+    public String upperCaseFirst(String texto) {
+        String[] palavras = texto.split(" ");
+        StringBuilder textoCapitalizado = new StringBuilder();
+
+        for (String palavra : palavras) {
+            String primeiraLetra = palavra.substring(0, 1);
+            String restoDaPalavra = palavra.substring(1);
+            textoCapitalizado.append(primeiraLetra.toUpperCase()).append(restoDaPalavra).append(" ");
+        }
+        return textoCapitalizado.toString().trim();
     }
 }
