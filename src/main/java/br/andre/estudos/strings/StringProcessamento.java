@@ -34,6 +34,11 @@ public class StringProcessamento {
                     texto = sc.nextLine();
                     out.println("O texto invertido fica " + inverteTexto(texto));
                     break;
+                case 4:
+                    out.println("Digite um texto:");
+                    texto = sc.nextLine();
+                    out.println("O texto em maiúsculo fica "+ texto.toLowerCase());
+                    break;
                 case 99:
                     out.println("Encerrando");
                     System.exit(0);
