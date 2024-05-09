@@ -38,7 +38,7 @@ public class StringProcessamento {
                 case 3:
                     out.println("Digite um texto:");
                     texto = sc.nextLine();
-                    out.println("O texto em maiúsculo fica "+ texto.toUpperCase());
+                    out.println("O texto em maiúsculo fica "+ textoMaiusculo(texto));
                     break;
                 case 99:
                     out.println("Encerrando");
@@ -56,5 +56,8 @@ public class StringProcessamento {
 
     public String inverteTexto(String texto) {
         return new StringBuilder(texto).reverse().toString();
+    }
+    public String textoMaiusculo(String texto){
+        return new StringBuilder(texto).toString().toUpperCase();
     }
 }
