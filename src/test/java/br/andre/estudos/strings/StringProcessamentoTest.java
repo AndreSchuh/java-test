@@ -26,4 +26,13 @@ class StringProcessamentoTest {
         assertNotEquals("Elieser Prichua", resultado);
         assertNotEquals("reseile auhcirp", resultado);
     }
+    @Test
+    @DisplayName("Testa se a palavra foi invertida de forma correta")
+    void textoMaiusculoTest(){
+        String texto = "Ola Mundo";
+        String resultado = principal.textoMaiusculo(texto);
+        assertEquals("OLA MUNDO", resultado);
+        assertNotEquals("ola mundo", resultado);
+        assertNotEquals("Ola Mundo", resultado);
+    }
 }
