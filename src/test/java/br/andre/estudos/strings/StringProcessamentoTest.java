@@ -26,9 +26,18 @@ class StringProcessamentoTest {
         assertNotEquals("Elieser Prichua", resultado);
         assertNotEquals("reseile auhcirp", resultado);
     }
+    @Test
+    @DisplayName("Testa se a palavra foi passada para maiúscula de forma correta")
+    void textoMaiusculoTest(){
+        String texto = "Ola Mundo";
+        String resultado = principal.textoMaiusculo(texto);
+        assertEquals("OLA MUNDO", resultado);
+        assertNotEquals("ola mundo", resultado);
+        assertNotEquals("Ola Mundo", resultado);
+    }
 
     @Test
-    @DisplayName("Testa se a palavra foi invertida de forma correta")
+    @DisplayName("Testa se a palavra foi passada para minúscula de forma correta")
     void textoMinusculoTest(){
         String texto = "Ola mundo";
         String resultado = principal.textoMinusculo(texto);

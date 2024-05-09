@@ -6,7 +6,7 @@ import static java.lang.System.out;
 
 public class StringProcessamento {
 
-    public void exibeMenu(){
+    public void exibeMenu() {
         Scanner sc = new Scanner(System.in);
 
         String texto;
@@ -17,7 +17,9 @@ public class StringProcessamento {
                      \nMenu\n
                     1 - Contar letras do texto
                     2 - Texto invertido
+                    3 - Texto maiúsculo
                     4 - Texto minúsculo
+                    5 - Primeira letra maiúscula no texto                
                     99 - Sair 
                     Digite a opção desejada\n""";
             out.print(menu);
@@ -45,6 +47,11 @@ public class StringProcessamento {
                     texto = sc.nextLine();
                     out.println("O texto em minúsculo fica "+ textoMinusculo(texto));
                     break;
+                case 5:
+                    out.println("Digite um texto:");
+                    texto = sc.nextLine();
+                    out.println("O texto com a primeira letra maiúscula fica " + upperCaseFirst(texto));
+                    break;
                 case 99:
                     out.println("Encerrando");
                     System.exit(0);
@@ -64,5 +71,22 @@ public class StringProcessamento {
     }
     public String textoMinusculo(String texto){
         return new StringBuilder(texto).toString().toLowerCase();
+    }
+
+
+    public String textoMaiusculo(String texto){
+        return new StringBuilder(texto).toString().toUpperCase();
+    }
+
+    public String upperCaseFirst(String texto) {
+        String[] palavras = texto.split(" ");
+        StringBuilder textoCapitalizado = new StringBuilder();
+
+        for (String palavra : palavras) {
+            String primeiraLetra = palavra.substring(0, 1);
+            String restoDaPalavra = palavra.substring(1);
+            textoCapitalizado.append(primeiraLetra.toUpperCase()).append(restoDaPalavra).append(" ");
+        }
+        return textoCapitalizado.toString().trim();
     }
 }
