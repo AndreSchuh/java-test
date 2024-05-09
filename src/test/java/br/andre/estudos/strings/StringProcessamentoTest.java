@@ -26,6 +26,7 @@ class StringProcessamentoTest {
         assertNotEquals("Elieser Prichua", resultado);
         assertNotEquals("reseile auhcirp", resultado);
     }
+
     @Test
     @DisplayName("Testa se a palavra foi passada para maiúscula de forma correta")
     void textoMaiusculoTest(){
