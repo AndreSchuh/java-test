@@ -17,6 +17,7 @@ public class StringProcessamento {
                      \nMenu\n
                     1 - Contar letras do texto
                     2 - Texto invertido
+                    4 - Texto minúsculo
                     99 - Sair 
                     Digite a opção desejada\n""";
             out.print(menu);
@@ -42,7 +43,7 @@ public class StringProcessamento {
                 case 4:
                     out.println("Digite um texto:");
                     texto = sc.nextLine();
-                    out.println("O texto em maiúsculo fica "+ texto.toLowerCase());
+                    out.println("O texto em minúsculo fica "+ textoMinusculo(texto));
                     break;
                 case 99:
                     out.println("Encerrando");
@@ -60,5 +61,8 @@ public class StringProcessamento {
 
     public String inverteTexto(String texto) {
         return new StringBuilder(texto).reverse().toString();
+    }
+    public String textoMinusculo(String texto){
+        return new StringBuilder(texto).toString().toLowerCase();
     }
 }
