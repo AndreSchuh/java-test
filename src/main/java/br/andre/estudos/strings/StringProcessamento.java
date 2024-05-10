@@ -19,7 +19,8 @@ public class StringProcessamento {
                     2 - Texto invertido
                     3 - Texto maiúsculo
                     4 - Texto minúsculo
-                    5 - Primeira letra maiúscula no texto                
+                    5 - Primeira letra maiúscula no texto
+                    6 - Texto palíndromo                
                     99 - Sair 
                     Digite a opção desejada\n""";
             out.print(menu);
@@ -51,6 +52,11 @@ public class StringProcessamento {
                     out.println("Digite um texto:");
                     texto = sc.nextLine();
                     out.println("O texto com a primeira letra maiúscula fica " + upperCaseFirst(texto));
+                    break;
+                case 6:
+                    out.println("Digite um texto:");
+                    texto = sc.nextLine();
+                    out.println("O texto " + textoPalindromo(texto));
                     break;
                 case 99:
                     out.println("Encerrando");
@@ -88,5 +94,13 @@ public class StringProcessamento {
             textoCapitalizado.append(primeiraLetra.toUpperCase()).append(restoDaPalavra).append(" ");
         }
         return textoCapitalizado.toString().trim();
+    }
+
+    public String textoPalindromo(String texto){
+        String textoInverso = new StringBuilder(texto).reverse().toString();
+        String truePalindromo = "é um palíndromo";
+        String falsePalindromo = "não é um palíndromo";
+        boolean palindromo = texto.equalsIgnoreCase(textoInverso);
+        return (palindromo == true) ?  truePalindromo : falsePalindromo;
     }
 }
