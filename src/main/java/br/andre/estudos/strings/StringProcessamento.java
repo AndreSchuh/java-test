@@ -56,7 +56,8 @@ public class StringProcessamento {
                 case 6:
                     out.println("Digite um texto:");
                     texto = sc.nextLine();
-                    out.println("O texto " + textoPalindromo(texto));
+                    String resultado = textoPalindromo(texto) ? "é palíndromo" : "não é palíndromo";
+                    out.printf("O texto " + resultado);
                     break;
                 case 99:
                     out.println("Encerrando");
@@ -96,11 +97,5 @@ public class StringProcessamento {
         return textoCapitalizado.toString().trim();
     }
 
-    public String textoPalindromo(String texto){
-        String textoInverso = new StringBuilder(texto).reverse().toString();
-        String truePalindromo = "é um palíndromo";
-        String falsePalindromo = "não é um palíndromo";
-        boolean palindromo = texto.equalsIgnoreCase(textoInverso);
-        return (palindromo == true) ?  truePalindromo : falsePalindromo;
-    }
+    public boolean textoPalindromo(String texto){ return texto.equalsIgnoreCase(new StringBuilder(texto).reverse().toString());}
 }

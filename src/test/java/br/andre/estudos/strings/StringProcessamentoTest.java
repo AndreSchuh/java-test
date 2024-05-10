@@ -57,4 +57,13 @@ class StringProcessamentoTest {
         String resultado = principal.textoMinusculo(partes[0]);
         assertEquals(partes[1], resultado);
     }
+
+    @DisplayName("Testa o método que retorna se um texto é palíndromo")
+    @ParameterizedTest
+    @ValueSource(strings = { "ovo:true", "Ala:true", "Renner:true"})
+    void textoPalindromoParametrizedTest(String texto) {
+        String[] partes = texto.split(":");
+        String resultado = String.valueOf(principal.textoPalindromo(partes[0]));
+        assertEquals(partes[1], resultado);
+    }
 }
