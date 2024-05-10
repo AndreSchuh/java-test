@@ -51,7 +51,7 @@ class StringProcessamentoTest {
 
     @DisplayName("Testa o método que retorna a quantidade de caracteres de uma palavra - ParametrizedTest")
     @ParameterizedTest
-    @ValueSource(strings = {"Andre:andre", "Elieser:elieser", "Prichua:prichua", "Fulano:fulano", "ciclanO:ciclano"})
+    @ValueSource(strings = {"Andre:andre", "Elieser:Elieser", "Prichua:prichua", "Fulano:fulano", "ciclanO:ciclano"})
     void textoMinusculoParametrizedExampleTest(String texto) {
         String[] partes = texto.split(":");
         String resultado = principal.textoMinusculo(partes[0]);
