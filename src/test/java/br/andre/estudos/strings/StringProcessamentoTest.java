@@ -3,6 +3,7 @@ package br.andre.estudos.strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,7 +50,7 @@ class StringProcessamentoTest {
         assertNotEquals("OLA MUNDO", resultado);
     }
 
-    @DisplayName("Testa o método que retorna a quantidade de caracteres de uma palavra - ParametrizedTest")
+    @DisplayName("Testa o método que retorna a palavra minúscula")
     @ParameterizedTest
     @ValueSource(strings = {"Andre:andre", "Elieser:elieser", "Prichua:prichua", "Fulano:fulano", "ciclanO:ciclano"})
     void textoMinusculoParametrizedExampleTest(String texto) {
@@ -57,4 +58,64 @@ class StringProcessamentoTest {
         String resultado = principal.textoMinusculo(partes[0]);
         assertEquals(partes[1], resultado);
     }
+
+    @DisplayName("Testa o método que retorna a primeira letra maiúsucula ")
+    @ParameterizedTest
+    @ValueSource(strings = {"andre:Andre", "elieser:Elieser", "vasco:Vasco"})
+    void textoMaiuculoPrimeiroParametrizedExampleTest(String texto) {
+        String[] partes = texto.split(":");
+        String resultado = principal.upperCaseFirst(partes[0]);
+        assertEquals(partes[1], resultado);
+    }
+
+    @DisplayName("Testa o método que retorna se há um palíndromo")
+    @ParameterizedTest
+    @CsvSource({"ovo,true", "ala,true", "VASCO,false"})
+    void textoPalindromoParametrizedExampleTest(String texto, boolean expectedResult) {
+        boolean resultado = principal.textoPalindromo(texto);
+        assertEquals(expectedResult, resultado);
+    }
+
+    @DisplayName("Testa o método que retorna a quantidade de palavras")
+    @ParameterizedTest
+    @ValueSource(strings = {"ovo:1", "ala esquerda:2", "VASCO da Gama:3"})
+    void quantidadeDePalavrasParametrizedExampleTest(String texto) {
+        String[] partes = texto.split(":");
+        int resultado = principal.quantidadePalavra(partes[0]);
+        assertEquals(Integer.parseInt(partes[1]), resultado);
+    }
+
+    @DisplayName("Testa se os espaços serão retirados")
+    @ParameterizedTest
+    @ValueSource(strings = {"   Flamengo  :Flamengo", "    Elieser     :Elieser", "   Vasco :Vasco"})
+    void textoSemEspacoParametrizedExampleTest(String texto) {
+        String[] partes = texto.split(":");
+        String resultado = principal.textoSemEspaco(partes[0]);
+        assertEquals(partes[1], resultado);
+    }
+
+    @DisplayName("Testa se o caractere escolhido será o certo")
+    @ParameterizedTest
+    @CsvSource({"Internacional,I,0", "Gremio,r,1", "Laudo,a,1"})
+    void caractereEscolhidoParametrizedTest(String texto, String resultadoEsperado, int posicao) {
+        String resultado = String.valueOf(principal.caractereDePosicao(texto, posicao));
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @DisplayName("Testa se o texto até o caractere escolhido será o certo")
+    @ParameterizedTest
+    @CsvSource({"Internacional,Internacionao,l,o", "Gremio,Grebio,m,b", "Laudo,Lauro,d,r"})
+    void textoAteCaractereEscolhidoParametrizedTest(String texto, String resultadoEsperado, String caracterSubstituir, String caracterInserir) {
+        String resultado = String.valueOf(principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir));
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @DisplayName("Testa se o caractere escolhido será removido")
+    @ParameterizedTest
+    @CsvSource({"Internacional,Intenacional,r", "Gremio,remio,G", "Laudo,Lado,u"})
+    void removeCaractereParametrizedTest(String texto, String resultadoEsperado, String removeCaractere) {
+        String resultado = principal.removeCaractereTexto(texto, removeCaractere);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
 }
