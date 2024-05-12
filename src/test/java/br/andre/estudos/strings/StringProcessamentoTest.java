@@ -122,6 +122,8 @@ class StringProcessamentoTest {
         assertEquals(resultadoEsperado, resultado);
     }
 
+    //Esse é um teste que vai falhar, e DEVE ser removido. Usei como exemplo com argumentos que
+    // se o usuário informar "," ou ":" na frase daria problema
     @DisplayName("Testa se o caractere escolhido será removido")
     @ParameterizedTest
     @CsvSource({"Internacional com , e : teste,Intenacional com , e : teste,r"})
