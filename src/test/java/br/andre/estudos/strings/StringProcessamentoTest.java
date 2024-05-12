@@ -3,8 +3,12 @@ package br.andre.estudos.strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -117,5 +121,33 @@ class StringProcessamentoTest {
         String resultado = principal.removeCaractereTexto(texto, removeCaractere);
         assertEquals(resultadoEsperado, resultado);
     }
+
+    @DisplayName("Testa se o caractere escolhido será removido")
+    @ParameterizedTest
+    @CsvSource({"Internacional com , e : teste,Intenacional com , e : teste,r"})
+    void removeCaractereParametrized2Test(String texto, String resultadoEsperado, String removeCaractere) {
+        String resultado = principal.removeCaractereTexto(texto, removeCaractere);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @DisplayName("Testa se o caractere escolhido será removido com @MethodSource")
+    @ParameterizedTest
+    @MethodSource("removeCaractereParametrized3Args")//deve informar o nome do método que fornece os argumentos de entrada
+    void removeCaractereParametrized3Test(String texto, String resultadoEsperado, String caracterRemover) {
+        String resultado = principal.removeCaractereTexto(texto, caracterRemover);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    //método que fornece os argumentos de entrada para o teste
+    public static Stream<Arguments> removeCaractereParametrized3Args() {
+        return Stream.of(
+                Arguments.of("Internacional com , e : teste", "Intenacional com , e : teste", "r"),
+                Arguments.of("Outro exemplo com virg , e com dois pontos :", "Outro xmplo com virg ,  com dois pontos :", "e")
+        );
+    }
+
+
+
+
 
 }
