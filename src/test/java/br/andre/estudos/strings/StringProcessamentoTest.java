@@ -97,8 +97,8 @@ class StringProcessamentoTest {
     @DisplayName("Testa se o caractere escolhido será o certo")
     @ParameterizedTest
     @CsvSource({"Internacional,I,0", "Gremio,r,1", "Laudo,a,1"})
-    void caractereEscolhidoParametrizedTest(String texto, String resultadoEsperado, int posicao) {
-        String resultado = String.valueOf(principal.caractereDePosicao(texto, posicao));
+    void caractereEscolhidoParametrizedTest(String texto, char resultadoEsperado, int posicao) {
+        char resultado = (principal.caractereDePosicao(texto, posicao));
         assertEquals(resultadoEsperado, resultado);
     }
 
@@ -106,7 +106,7 @@ class StringProcessamentoTest {
     @ParameterizedTest
     @CsvSource({"Internacional,Internacionao,l,o", "Gremio,Grebio,m,b", "Laudo,Lauro,d,r"})
     void textoAteCaractereEscolhidoParametrizedTest(String texto, String resultadoEsperado, String caracterSubstituir, String caracterInserir) {
-        String resultado = String.valueOf(principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir));
+        String resultado = (principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir));
         assertEquals(resultadoEsperado, resultado);
     }
 

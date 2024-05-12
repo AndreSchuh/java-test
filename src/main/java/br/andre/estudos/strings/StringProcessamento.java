@@ -62,7 +62,7 @@ public class StringProcessamento {
                     out.println("O texto com a primeira letra maiúscula fica " + upperCaseFirst(texto));
                     break;
                 case 6:
-                    out.println("Digite um texto:");
+                    out.print("Digite um texto:");
                     texto = sc.nextLine();
                     String resultado = textoPalindromo(texto) ? "é palíndromo" : "não é palíndromo";
                     out.printf("O texto " + resultado);
@@ -70,19 +70,13 @@ public class StringProcessamento {
                 case 7:
                     out.print("Digite um texto:");
                     texto = sc.nextLine();
-
-                    if (quantidadePalavra(texto) > 1) {
-                        String s = "O texto tem " + quantidadePalavra(texto) + " palavra(s)";
-                        out.print(s);
-                    } else {
-                        String s = "O texto tem " + quantidadePalavra(texto) + " palavra";
-                        out.print(s);
-                    }
+                    int quantity = quantidadePalavra(texto);
+                    out.print("O texto tem " + (quantity > 0 ? " palavras." : "palavra."));
                     break;
                 case 8:
                     out.print("Digite um texto:");
                     texto = sc.nextLine();
-                    out.println(textoSemEspaco(texto));
+                    out.println("O texto sem espaço fica: " + textoSemEspaco(texto));
                     break;
                 case 9:
                     out.print("Digite um texto:");
@@ -90,6 +84,9 @@ public class StringProcessamento {
                     out.print("Digite a posição do caractere:");
                     posicaoTexto = sc.nextInt();
                     out.println("O seu caractere é " + caractereDePosicao(texto, posicaoTexto));
+                    if (posicaoTexto > texto.length()) {
+                        out.println("Opção inválida");
+                    }
                     break;
                 case 10:
                     out.print("Digite um texto:");
@@ -180,11 +177,11 @@ public class StringProcessamento {
     }
 
     public String trocaPosicaoCaractere(String texto, String caracterSubstituir, String caracterInserir){
-        return texto.replace(caracterSubstituir, caracterInserir);
+        return texto.replaceAll("(?i)" + caracterSubstituir, caracterInserir);
     }
 
     public String removeCaractereTexto(String texto, String caracterRemover){
-        String textoCaracterRemovido = texto.replace(caracterRemover, "");
+        String textoCaracterRemovido = texto.replaceAll("(?i)" + caracterRemover, "");
         return textoCaracterRemovido;
     }
 }
