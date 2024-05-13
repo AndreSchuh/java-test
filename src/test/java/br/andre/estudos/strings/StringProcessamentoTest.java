@@ -122,16 +122,6 @@ class StringProcessamentoTest {
         assertEquals(resultadoEsperado, resultado);
     }
 
-    //Esse é um teste que vai falhar, e DEVE ser removido. Usei como exemplo com argumentos que
-    // se o usuário informar "," ou ":" na frase daria problema
-    @DisplayName("Testa se o caractere escolhido será removido")
-    @ParameterizedTest
-    @CsvSource({"Internacional com , e : teste,Intenacional com , e : teste,r"})
-    void removeCaractereParametrized2Test(String texto, String resultadoEsperado, String removeCaractere) {
-        String resultado = principal.removeCaractereTexto(texto, removeCaractere);
-        assertEquals(resultadoEsperado, resultado);
-    }
-
     @DisplayName("Testa se o caractere escolhido será removido com @MethodSource")
     @ParameterizedTest
     @MethodSource("removeCaractereParametrized3Args")//deve informar o nome do método que fornece os argumentos de entrada
