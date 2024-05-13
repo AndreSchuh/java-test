@@ -100,7 +100,7 @@ class StringProcessamentoTest {
 
     @DisplayName("Testa se o caractere escolhido será o certo")
     @ParameterizedTest
-    @CsvSource({"Internacional,O seu caractere é n, 5", "Gremio,O seu caractere é r,1", "Laudo,O seu caractere é a,1"})
+    @CsvSource({"Internacional,n,5", "Gremio,r,1", "Laudo,a,1", "oi,Opção inválida.,2"})
     void caractereEscolhidoParametrizedTest(String texto, String resultadoEsperado, int posicao) {
         String resultado = (principal.caractereDePosicao(texto, posicao));
         assertEquals(resultadoEsperado, resultado);
@@ -113,6 +113,7 @@ class StringProcessamentoTest {
         String resultado = (principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir));
         assertEquals(resultadoEsperado, resultado);
     }
+
     @DisplayName("Testa se o caractere será trocado corretamente")
     @ParameterizedTest
     @MethodSource("trocaCaractereParametrized3Args")
@@ -124,7 +125,7 @@ class StringProcessamentoTest {
     public static Stream<Arguments> trocaCaractereParametrized3Args(){
         return Stream.of(
             Arguments.of("Bola", "a", "o", "Bolo"),
-            Arguments.of("Furo", "f", "t", "turo")
+            Arguments.of("Furo", "f", "t", "Turo")
         );
     }
     @DisplayName("Testa se o caractere escolhido será removido com @MethodSource")

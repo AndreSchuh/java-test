@@ -1,6 +1,5 @@
 package br.andre.estudos.strings;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.System.out;
@@ -83,14 +82,14 @@ public class StringProcessamento {
                     texto = sc.nextLine();
                     out.print("Digite a posição do caractere:");
                     posicaoTexto = sc.nextInt();
-                    out.println(resposta + caractereDePosicao(texto, posicaoTexto));
+                    out.println(caractereDePosicao(texto, posicaoTexto));
                     break;
                 case 10:
                     out.print("Digite um texto:");
                     texto = sc.nextLine();
                     out.print("Digite até qual posição você deseja imprimir esse texto:");
                     posicaoTexto = sc.nextInt();
-                    out.println(printAteposicao(texto, posicaoTexto));
+                    out.println(printAtePosicao(texto, posicaoTexto));
                     break;
                 case 11:
                     out.print("Digite um texto:");
@@ -160,15 +159,15 @@ public class StringProcessamento {
     }
 
     public String caractereDePosicao(String texto, int posicaoTexto) {
-        String resposta;
-        if (posicaoTexto <= texto.length() && posicaoTexto > 0) {
-            resposta = ("O seu caractere é " + texto.charAt(posicaoTexto));
-        }else {
-            resposta = ("Opção inválida");
+        //Teste de falha PRIMEIRO
+        //Fail First
+        // (Boa prática de programação)
+        if(posicaoTexto >= texto.length()) {
+            return "Opção inválida.";
         }
-        return resposta;
+        return String.valueOf(texto.charAt(posicaoTexto));
     }
-    public String printAteposicao(String texto, int posicaoTexto) {
+    public String printAtePosicao(String texto, int posicaoTexto) {
         String resultado;
         if(posicaoTexto <= texto.length()){
             resultado = texto.substring(0, posicaoTexto);
@@ -179,26 +178,12 @@ public class StringProcessamento {
     }
 
     public String trocaPosicaoCaractere(String texto, String caracterSubstituir, String caracterInserir){
-        StringBuilder sb = new StringBuilder();
-        for(char c : texto.toCharArray()){
-            if(Character.toString(c).equalsIgnoreCase(caracterSubstituir)){
-                sb.append(caracterInserir);
-            }else{
-                sb.append(c);
-            }
-        }
-        return sb.toString();
+        String textoComCaracterSubstituido = texto.replaceAll(caracterSubstituir.toLowerCase(), caracterInserir.toLowerCase());
+        return textoComCaracterSubstituido.replaceAll(caracterSubstituir.toUpperCase(), caracterInserir.toUpperCase());
     }
 
     public String removeCaractereTexto(String texto, String caracterRemover){
-        StringBuilder sb = new StringBuilder();
-        for(char c : texto.toCharArray()){
-            if (Character.toString(c).equalsIgnoreCase(caracterRemover)){
-                sb.append("");
-            }else{
-                sb.append(c);
-            }
-        }
-        return sb.toString();
+        String textoComCaracterSubstituido = texto.replaceAll(caracterRemover.toLowerCase(), "");
+        return textoComCaracterSubstituido.replaceAll(caracterRemover.toUpperCase(), "");
     }
 }
