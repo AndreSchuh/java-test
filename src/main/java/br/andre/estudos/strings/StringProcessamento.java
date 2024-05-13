@@ -83,10 +83,7 @@ public class StringProcessamento {
                     texto = sc.nextLine();
                     out.print("Digite a posição do caractere:");
                     posicaoTexto = sc.nextInt();
-                    out.println("O seu caractere é " + caractereDePosicao(texto, posicaoTexto));
-                    if (posicaoTexto > texto.length()) {
-                        out.println("Opção inválida");
-                    }
+                    out.println(resposta + caractereDePosicao(texto, posicaoTexto));
                     break;
                 case 10:
                     out.print("Digite um texto:");
@@ -162,10 +159,15 @@ public class StringProcessamento {
         return  texto.trim();
     }
 
-    public char caractereDePosicao(String texto, int posicaoTexto) {
-        return texto.charAt(posicaoTexto);
+    public String caractereDePosicao(String texto, int posicaoTexto) {
+        String resposta;
+        if (posicaoTexto <= texto.length() && posicaoTexto > 0) {
+            resposta = ("O seu caractere é " + texto.charAt(posicaoTexto));
+        }else {
+            resposta = ("Opção inválida");
+        }
+        return resposta;
     }
-
     public String printAteposicao(String texto, int posicaoTexto) {
         String resultado;
         if(posicaoTexto <= texto.length()){
@@ -177,11 +179,29 @@ public class StringProcessamento {
     }
 
     public String trocaPosicaoCaractere(String texto, String caracterSubstituir, String caracterInserir){
-        return texto.replaceAll("(?i)" + caracterSubstituir, caracterInserir);
+        StringBuilder sb = new StringBuilder();
+        for(char c : texto.toCharArray()){
+            if(Character.toString(c).equalsIgnoreCase(caracterSubstituir)){
+                sb.append(caracterInserir);
+            }else{
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 
     public String removeCaractereTexto(String texto, String caracterRemover){
-        String textoCaracterRemovido = texto.replaceAll("(?i)" + caracterRemover, "");
-        return textoCaracterRemovido;
+        //String textoCaracterRemovido = texto.replaceAll("(?i)" + caracterRemover, "");
+        //return textoCaracterRemovido;
+
+        StringBuilder sb = new StringBuilder();
+        for(char c : texto.toCharArray()){
+            if (Character.toString(c).equalsIgnoreCase(caracterRemover)){
+                sb.append("");
+            }else{
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 }
