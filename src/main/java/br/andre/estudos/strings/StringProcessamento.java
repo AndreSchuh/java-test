@@ -167,14 +167,12 @@ public class StringProcessamento {
         }
         return String.valueOf(texto.charAt(posicaoTexto));
     }
+
     public String printAtePosicao(String texto, int posicaoTexto) {
-        String resultado;
-        if(posicaoTexto <= texto.length()){
-            resultado = texto.substring(0, posicaoTexto);
-        }else{
-            resultado = ("opção inválida");
+        if (posicaoTexto >= texto.length()) {
+            return "Opção inválida";
         }
-        return resultado;
+        return texto.substring(0, posicaoTexto);
     }
 
     public String trocaPosicaoCaractere(String texto, String caracterSubstituir, String caracterInserir){

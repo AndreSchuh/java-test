@@ -91,7 +91,7 @@ class StringProcessamentoTest {
 
     @DisplayName("Testa se os espaços serão retirados")
     @ParameterizedTest
-    @ValueSource(strings = {"   Flamengo  :Flamengo", "    Elieser     :Elieser", "   Vasco :Vasco"})
+    @ValueSource(strings = {"   Flamengo :Flamengo", "    Elieser     :Elieser", "   Vasco :Vasco"})
     void textoSemEspacoParametrizedExampleTest(String texto) {
         String[] partes = texto.split(":");
         String resultado = principal.textoSemEspaco(partes[0]);
@@ -141,6 +141,22 @@ class StringProcessamentoTest {
         return Stream.of(
                 Arguments.of("Internacional com , e : teste", "Intenacional com , e : teste", "r"),
                 Arguments.of("Outro exemplo com virg , e com dois pontos :", "Outro xmplo com virg ,  com dois pontos :", "e")
+        );
+    }
+
+    @DisplayName("Testa se o print foi feito até a posição de maneira correta")
+    @ParameterizedTest
+    @MethodSource("printAtePosicaoParametrizedTest")
+    void printAtePosicaoParametrizedTest(String texto, String resultadoEsperado, int posicao){
+        String resultado = principal.printAtePosicao(texto, posicao);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    public static  Stream<Arguments> printAtePosicaoParametrizedTest(){
+        return Stream.of(
+                Arguments.of("Bola", "Bol", 3),
+                Arguments.of("Elieser", "Elie", 4),
+                Arguments.of("André", "Opção inválida", 20)
         );
     }
 }
