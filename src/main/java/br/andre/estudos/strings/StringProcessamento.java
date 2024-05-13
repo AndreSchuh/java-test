@@ -191,9 +191,6 @@ public class StringProcessamento {
     }
 
     public String removeCaractereTexto(String texto, String caracterRemover){
-        //String textoCaracterRemovido = texto.replaceAll("(?i)" + caracterRemover, "");
-        //return textoCaracterRemovido;
-
         StringBuilder sb = new StringBuilder();
         for(char c : texto.toCharArray()){
             if (Character.toString(c).equalsIgnoreCase(caracterRemover)){

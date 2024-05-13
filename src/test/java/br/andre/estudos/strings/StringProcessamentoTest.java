@@ -113,15 +113,20 @@ class StringProcessamentoTest {
         String resultado = (principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir));
         assertEquals(resultadoEsperado, resultado);
     }
-
-    @DisplayName("Testa se o caractere escolhido será removido")
+    @DisplayName("Testa se o caractere será trocado corretamente")
     @ParameterizedTest
-    @CsvSource({"Internacional,Intenacional,r", "Gremio,remio,G", "Laudo,Lado,u"})
-    void removeCaractereParametrizedTest(String texto, String resultadoEsperado, String removeCaractere) {
-        String resultado = principal.removeCaractereTexto(texto, removeCaractere);
+    @MethodSource("trocaCaractereParametrized3Args")
+    void trocaCaractereParametrizedTest(String texto, String caracterSubstituir, String caracterInserir, String resultadoEsperado) {
+        String resultado = principal.trocaPosicaoCaractere(texto, caracterSubstituir, caracterInserir);
         assertEquals(resultadoEsperado, resultado);
     }
 
+    public static Stream<Arguments> trocaCaractereParametrized3Args(){
+        return Stream.of(
+            Arguments.of("Bola", "a", "o", "Bolo"),
+            Arguments.of("Furo", "f", "t", "turo")
+        );
+    }
     @DisplayName("Testa se o caractere escolhido será removido com @MethodSource")
     @ParameterizedTest
     @MethodSource("removeCaractereParametrized3Args")//deve informar o nome do método que fornece os argumentos de entrada
@@ -137,9 +142,4 @@ class StringProcessamentoTest {
                 Arguments.of("Outro exemplo com virg , e com dois pontos :", "Outro xmplo com virg ,  com dois pontos :", "e")
         );
     }
-
-
-
-
-
 }
