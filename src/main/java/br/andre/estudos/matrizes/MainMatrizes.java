@@ -22,7 +22,6 @@ public class MainMatrizes {
             matriz.imprimeMatriz(soma);
             System.out.println("---------------------");
 
-
             System.out.println("Multiplicar matrizes:");
             int[][] multiplicacao = matriz.multiplicarMatrizes(matrizA, matrizB);
             matriz.imprimeMatriz(multiplicacao);
