@@ -14,7 +14,7 @@ public class OperadorMatriz {
 
     public int[][] somarMatrizes(int[][] matrizA, int[][] matrizB) {
         if (matrizA.length != matrizB.length) {
-            System.out.println("Matrizes incompatíveis");
+            System.out.println("As matrizes incompatíveis");
             return null;
         }
 
