@@ -12,14 +12,14 @@ public class MenuDesafioMaps {
     Map<String, Double> notas = new HashMap<>();
 
         Scanner scanner = new Scanner(System.in);
-        Entities entities = new Entities();
+        MapsManipulator mapsManipulator = new MapsManipulator();
 
         String nomeAluno = "";
         Double notaAluno = 0.0;
         int opcaoUser = 0;
 
         while (true) {
-            if (opcaoUser != 3) {entities.exibeMapa(notas);}
+            if (opcaoUser != 3) {mapsManipulator.exibeMapa(notas);}
             System.out.println("-------------------------");
             System.out.println("Notas dos alunos");
             System.out.println("1 - Adicionar nota");
@@ -51,7 +51,7 @@ public class MenuDesafioMaps {
                         System.out.print("Digite a nota do aluno: ");
                         notaAluno = scanner.nextDouble();
 
-                        entities.adicionarNota(notas, notaAluno, nomeAluno);
+                        mapsManipulator.adicionarNota(notas, notaAluno, nomeAluno);
                     }
                     System.out.println("Aluno e nota adicionados com sucesso");
                     System.out.println("-------------------------");
@@ -61,34 +61,33 @@ public class MenuDesafioMaps {
                     scanner.nextLine();
                     System.out.print("Digite o nome do aluno que deseja remover: ");
                     String nomeAlunoRemover = scanner.nextLine();
-                    entities.removerNota(notas, nomeAlunoRemover);
+                    mapsManipulator.removerNota(notas, nomeAlunoRemover);
                     System.out.println("Aluno removido com sucesso");
                     System.out.println("-------------------------");
                     break;
                 case 3:
                     System.out.println("-------------------------");
                     System.out.println("Listando alunos e notas...");
-                    entities.exibeMapa(notas);
+                    mapsManipulator.exibeMapa(notas);
                     break;
                 case 4:
                     System.out.println("-------------------------");
-                    System.out.printf("A soma das notas é %.2f\n", entities.somarNota(notas));
+                    System.out.printf("A soma das notas é %.2f\n", mapsManipulator.somarNota(notas));
                     System.out.println("-------------------------");
                     break;
                 case 5:
                     System.out.println("-------------------------");
-                    System.out.printf("A média das notas é %.2f\n", entities.mediaNotas(notas));
+                    System.out.printf("A média das notas é %.2f\n", mapsManipulator.mediaNotas(notas));
                     System.out.println("-------------------------");
                     break;
                 case 6:
                     System.out.println("-------------------------");
-                    System.out.println("Aluno com a maior nota: " + entities.nomeAlunoNotaMaior(notas, notaAluno));
-                    System.out.println("Maior nota: " + entities.notaMaior(notas));
+                    mapsManipulator.notaMaior2(notas);
                     System.out.println("-------------------------");
                     break;
                 case 7:
                     System.out.println("-------------------------");
-                    entities.notaMenor2(notas);
+                    mapsManipulator.notaMenor2(notas);
                     System.out.println("-------------------------");
                     break;
             }

@@ -3,14 +3,16 @@ package br.andre.estudos.mapas;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Entities {
+public class MapsManipulator {
 
-    public void adicionarNota(Map<String, Double> notas, double notaAluno, String nomeAluno) {
+    public Map adicionarNota(Map<String, Double> notas, double notaAluno, String nomeAluno) {
         notas.put(nomeAluno, notaAluno);
+        return notas;
     }
 
-    public void removerNota(Map<String, Double> notas, String nomeAluno) {
+    public Map removerNota(Map<String, Double> notas, String nomeAluno) {
         notas.remove(nomeAluno);
+        return notas;
     }
 
     public double somarNota(Map<String, Double> notas) {
@@ -80,6 +82,10 @@ public class Entities {
 
     public void notaMenor2(Map<String, Double> notas) {
         notas.entrySet().stream().min(Map.Entry.comparingByValue()).ifPresent(mapa -> System.out.println("Menor nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
+    }
+
+    public void notaMaior2(Map<String, Double> notas) {
+        notas.entrySet().stream().max(Map.Entry.comparingByValue()).ifPresent(mapa -> System.out.println("Maior nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
     }
 
     public void exibeMapa(Map<String, Double> notas) {notas.forEach((key, value) -> System.out.println("Aluno: " + key + " - Nota: " + value));}
