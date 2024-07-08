@@ -82,12 +82,12 @@ public class MenuDesafioMaps {
                     break;
                 case 6:
                     System.out.println("-------------------------");
-                    mapsManipulator.notaMaior2(notas);
+                    mapsManipulator.notaMaior(notas);
                     System.out.println("-------------------------");
                     break;
                 case 7:
                     System.out.println("-------------------------");
-                    mapsManipulator.notaMenor2(notas);
+                    mapsManipulator.notaMenor(notas);
                     System.out.println("-------------------------");
                     break;
             }

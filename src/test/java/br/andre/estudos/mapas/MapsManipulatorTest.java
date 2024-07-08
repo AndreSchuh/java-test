@@ -20,6 +20,7 @@ public class MapsManipulatorTest {
         mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
 
         assertEquals(90, notas.get("Elieser"));
+        assertEquals(1, notas.size()); // <<<<<<<<<<<<<<< valida quantos elementos tem no map
     }
 
     @Test
@@ -28,32 +29,41 @@ public class MapsManipulatorTest {
         mapaPrincipal.removerNota(notas, nomeAluno);
 
         assertEquals(null, notas.get(null));
+        assertEquals(0, notas.size());// <<<<<<<<<<<<<<< valida quantos elementos tem no map
     }
 
     @Test
     void somarNotaTest(){
-        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
-        notas.put("André", 60.0);
+        //fica estranho desse jeito!!!!!!!!!!
+//        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
+//        notas.put("André", 60.0);
+//
+//        assertEquals(150.0, mapaPrincipal.somarNota(notas));
 
+        //faz assim
+        notas.clear();
+        notas.put("Elieser", 90.0);
+        notas.put("André", 60.0);
         assertEquals(150.0, mapaPrincipal.somarNota(notas));
     }
 
     @Test
     void mediaNotasTest(){
-        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
-        notas.put("André", 60.0);
+        //fica estranho desse jeito!!!!!!!!!!
+//        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
+//        notas.put("André", 60.0);
+//
+//        assertEquals(75.0, mapaPrincipal.mediaNotas(notas));
 
+        //faz assim
+        notas.clear();
+        notas.put("Elieser", 90.0);
+        notas.put("André", 60.0);
         assertEquals(75.0, mapaPrincipal.mediaNotas(notas));
+
     }
 
-    @Test
-    void maiorNotaTest(){
-        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
-        notas.put("André", 60.0);
-
-        assertEquals(90, notas.get("Elieser"));
-    }
-
+    //TODO (Remover) não precisa, esse método não é usado no sistema. Não criamos método só para teste, não faz sentido.
     @Test
     void nomeMaiorNotaTest(){
         mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
@@ -64,9 +74,23 @@ public class MapsManipulatorTest {
 
     @Test
     void notaMenorTest(){
-        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
-        notas.put("André", 60.0);
+        //fica estranho desse jeito!!!!!!!!!!
+//        mapaPrincipal.adicionarNota(notas, notaAluno, nomeAluno);
+//        notas.put("André", 60.0);
+//
+//        assertEquals(60, notas.get("André"));
 
-        assertEquals(60, notas.get("André"));
+        //faz assim
+        notas.clear();
+        notas.put("Elieser", 90.0);
+        notas.put("André", 95.0);
+        Map.Entry<String, Double> menorNota = mapaPrincipal.notaMenor(notas);
+        assertEquals("Elieser", menorNota.getKey());
+        assertEquals(90, menorNota.getValue());
+        assertEquals(2, notas.size());
     }
+
+    //TODO implementar o teste do nota maior
+    @Test
+    void notaMaiorTest(){}
 }
