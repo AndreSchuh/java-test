@@ -47,16 +47,6 @@ public class MapsManipulator {
         return maior;
     }
 
-    //TODO (Remover) Não precisa desse cara, é só fazer alg igual o notaMenor retornando uma entrada do mapa e pegar a key (nome) lá no teste
-    public String nomeAlunoNotaMaior(Map<String, Double> notas, double maiorNota) {
-        for (Map.Entry<String, Double> entrada : notas.entrySet()) {
-            if (entrada.getValue() == maiorNota) {
-                return entrada.getKey();
-            }
-        }
-        return "";
-    }
-
 
     public Map.Entry<String, Double> notaMenor(Map<String, Double> notas) {
         Optional<Map.Entry<String, Double>> min = notas.entrySet().stream().min(Map.Entry.comparingByValue());
@@ -64,9 +54,11 @@ public class MapsManipulator {
         return min.orElseGet(() -> null);
     }
 
-    public void notaMaior(Map<String, Double> notas) {
+    public  Map.Entry<String, Double> notaMaior(Map<String, Double> notas) {
         //TODO ajustar igual o nota menor acima.
-        notas.entrySet().stream().max(Map.Entry.comparingByValue()).ifPresent(mapa -> System.out.println("Maior nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
+        Optional<Map.Entry<String, Double>> max = notas.entrySet().stream().max(Map.Entry.comparingByValue());
+        max.ifPresent(mapa -> System.out.println("Menor nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
+        return max.orElseGet(() -> null);
     }
 
     public void exibeMapa(Map<String, Double> notas) {notas.forEach((key, value) -> System.out.println("Aluno: " + key + " - Nota: " + value));}
