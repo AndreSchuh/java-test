@@ -24,30 +24,6 @@ public class MapsManipulator {
         return notas.values().stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
     }
 
-    //TODO implementa o notaMaior lá embaixo e remove esse método depois
-    /**
-     * @deprecated Use {@link #notaMaior(Map)} instead
-     *  
-     */
-    @Deprecated 
-    public Map<String, Double> notaMaiorUnused(Map<String, Double> notas) {
-        double maiorNota = 0;
-        Map<String, Double> maior = new HashMap<>();
-
-        for (Map.Entry<String, Double> entrada : notas.entrySet()) {
-            String alunoAtual = entrada.getKey();
-            double notaAtual = entrada.getValue();
-
-            if (notaAtual > maiorNota) {
-                maiorNota = notaAtual;
-                maior.clear();
-                maior.put(alunoAtual, notaAtual);
-            }
-        }
-        return maior;
-    }
-
-
     public Map.Entry<String, Double> notaMenor(Map<String, Double> notas) {
         Optional<Map.Entry<String, Double>> min = notas.entrySet().stream().min(Map.Entry.comparingByValue());
         min.ifPresent(mapa -> System.out.println("Menor nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
@@ -55,7 +31,6 @@ public class MapsManipulator {
     }
 
     public  Map.Entry<String, Double> notaMaior(Map<String, Double> notas) {
-        //TODO ajustar igual o nota menor acima.
         Optional<Map.Entry<String, Double>> max = notas.entrySet().stream().max(Map.Entry.comparingByValue());
         max.ifPresent(mapa -> System.out.println("Menor nota: " + mapa.getValue() + " Aluno: " + mapa.getKey()));
         return max.orElseGet(() -> null);
