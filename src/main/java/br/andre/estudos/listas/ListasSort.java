@@ -9,8 +9,6 @@ Set e Queue não são diretamente ordenáveis com Collections.sort porque não g
 */
 public class ListasSort{
     public static void main(String[] args) {
-        // Listas usando interface Iterator (muito utilizada)
-
         ArrayList<String> list = new ArrayList<>();
         list.add("C");
         list.add("A");
