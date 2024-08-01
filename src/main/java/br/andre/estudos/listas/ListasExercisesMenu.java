@@ -12,6 +12,9 @@ public class ListasExercisesMenu {
         String nameTask;
 
         while (true){
+            System.out.println("________________________________");
+            System.out.println("------- GERENCIAR TAREFA -------");
+            System.out.println("________________________________");
             System.out.println("1 - Adicionar tarefa");
             System.out.println("2 - Listar tarefas pendentes");
             System.out.println("3 - Remover tarefa");
@@ -46,7 +49,7 @@ public class ListasExercisesMenu {
                     break;
 
                 case 4:
-                    String completedTask = operator.completeTask();
+                    Set<String> completedTask = operator.completeTask();
                     if (completedTask != null) {
                         System.out.println("Tarefa : " + completedTask + " completada");
                     } else {

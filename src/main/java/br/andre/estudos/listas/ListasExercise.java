@@ -4,40 +4,45 @@ import java.util.*;
 
 public class ListasExercise {
 
-    public static List<String> tasks;
+//    public static List<String> tasks;
     Set<String> completedTasks;
     Queue<String> taskQueue;
 
     public ListasExercise() {
-        tasks = new ArrayList<>();
+//        tasks = new ArrayList<>();
         completedTasks = new HashSet<>();
-        taskQueue = new LinkedList<>(tasks);
+        taskQueue = new LinkedList<>();
     }
 
-    public List<String> addTask(String nameTask) {
-        tasks.add(nameTask);
+    public Queue<String> addTask(String nameTask) {
+//        tasks.add(nameTask);
         taskQueue.add(nameTask);
-        return tasks;
+        return taskQueue;
     }
 
     public void displayPendingTasks() {
-        for (String task : tasks) {
-            System.out.println(task);
+        Iterator<String> iterator = taskQueue.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
         }
+//        for (String task : tasks) {
+//            System.out.println(task);
+//        }
     }
 
-    public List<String> removeTask(String nameTask){
-        tasks.remove(nameTask);
+    public Queue<String> removeTask(String nameTask){
+//        tasks.remove(nameTask);
         taskQueue.remove(nameTask);
-        return tasks;
+        return taskQueue;
     }
 
-    public String completeTask() {
+    public Set<String> completeTask() {
         System.out.println("------------------");
         String task = taskQueue.poll();
-        if (task != null && tasks.remove(task)) {
+        if (task != null) {
             completedTasks.add(task);
-            return task;
+//            return task;
+            return completedTasks;
         } else {
             return null;
         }
